@@ -15,7 +15,7 @@ linter:
 
 analyzer:
   exclude:
-    - "**/firebase_options_*.dart"
+    - "**/firebase_options.dart"
   errors:
     duplicate_ignore: ignore
     invalid_annotation_target: ignore

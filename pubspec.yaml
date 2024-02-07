@@ -1,5 +1,5 @@
 name: flutter_sample_flutterfire_gen
-description: "A new Flutter project."
+description: "flutter_sample_flutterfire_gen"
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -7,13 +7,21 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
+  cloud_firestore:
   cupertino_icons:
+  firebase_auth:
+  firebase_core:
   flutter:
     sdk: flutter
+  flutterfire_gen_annotation:
+  flutterfire_gen_utils:
+  json_annotation:
 
 dev_dependencies:
+  build_runner:
   flutter_test:
     sdk: flutter
+  flutterfire_gen:
   pedantic_mono:
 
 flutter:

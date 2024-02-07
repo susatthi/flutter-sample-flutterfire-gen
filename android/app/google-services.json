@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "360323395115",
+    "project_id": "flutter-sample-flutterfire-gen",
+    "storage_bucket": "flutter-sample-flutterfire-gen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360323395115:android:09db313278b327b1cdc46e",
+        "android_client_info": {
+          "package_name": "jp.susatthi.flutter_sample_flutterfire_gen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaE7wRvTxU5sJiognXceOBEEqGbwJgkdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
