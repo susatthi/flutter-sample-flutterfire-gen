@@ -10,12 +10,15 @@ part of 'user_document.dart';
 
 class ReadUserDocument {
   const ReadUserDocument({
+    required this.nickname,
     required this.createdAt,
     required this.updatedAt,
     required this.userId,
     required this.path,
     required this.userReference,
   });
+
+  final String? nickname;
 
   final DateTime? createdAt;
 
@@ -32,6 +35,7 @@ class ReadUserDocument {
       ...json,
     };
     return ReadUserDocument(
+      nickname: extendedJson['nickname'] as String?,
       createdAt: (extendedJson['createdAt'] as Timestamp?)?.toDate(),
       updatedAt: (extendedJson['updatedAt'] as Timestamp?)?.toDate(),
       userId: extendedJson['userId'] as String,
@@ -55,6 +59,7 @@ class ReadUserDocument {
   }
 
   ReadUserDocument copyWith({
+    String? nickname,
     DateTime? createdAt,
     DateTime? updatedAt,
     String? userId,
@@ -62,6 +67,7 @@ class ReadUserDocument {
     DocumentReference<ReadUserDocument>? userReference,
   }) {
     return ReadUserDocument(
+      nickname: nickname ?? this.nickname,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       userId: userId ?? this.userId,
@@ -77,10 +83,15 @@ class ReadUserDocument {
 /// `@alwaysUseFieldValueServerTimestampWhenCreating` annotated fields are
 /// automatically set to the server's timestamp.
 class CreateUserDocument {
-  const CreateUserDocument();
+  const CreateUserDocument({
+    this.nickname,
+  });
+
+  final String? nickname;
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
+      'nickname': nickname,
       'createdAt': FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     };
@@ -101,13 +112,17 @@ class CreateUserDocument {
 /// to the server's timestamp upon updating.
 class UpdateUserDocument {
   const UpdateUserDocument({
+    this.nickname,
     this.createdAt,
   });
+
+  final String? nickname;
 
   final DateTime? createdAt;
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
+      if (nickname != null) 'nickname': nickname,
       if (createdAt != null)
         'createdAt': createdAt == null ? null : Timestamp.fromDate(createdAt!),
       'updatedAt': FieldValue.serverTimestamp(),

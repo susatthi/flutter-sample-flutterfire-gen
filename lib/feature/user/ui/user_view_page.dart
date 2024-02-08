@@ -5,7 +5,9 @@ import 'package:gap/gap.dart';
 import '../../../core/data/firebase/firebase_auth.dart';
 import '../../../core/ui/component/button_loading.dart';
 import '../../../core/ui/component/riverpod.dart';
+import '../data/user_document.dart';
 import '../use_case/sign_out.dart';
+import '../use_case/update_user_document.dart';
 
 class UserViewPage extends StatelessWidget {
   const UserViewPage({super.key});
@@ -31,6 +33,7 @@ class _Body extends StatelessWidget {
         children: [
           Gap(32),
           _UidListTile(),
+          _NicknameListTile(),
           Gap(32),
           _SignOutButton(),
           Gap(32),
@@ -49,6 +52,86 @@ class _UidListTile extends ConsumerWidget {
     return ListTile(
       title: const Text('UID'),
       subtitle: Text(asyncValue.valueOrNull?.uid ?? ''),
+    );
+  }
+}
+
+class _NicknameListTile extends ConsumerWidget {
+  const _NicknameListTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncValue = ref.watch(userDocumentProvider);
+    final nickname = asyncValue.valueOrNull?.nickname;
+    return ListTile(
+      onTap: () => showModalBottomSheet<void>(
+        context: context,
+        builder: (context) => _UpdateNicknameBottomSheet(
+          nickname: nickname,
+        ),
+      ),
+      title: const Text('ニックネーム'),
+      subtitle: Text(nickname ?? '未設定'),
+    );
+  }
+}
+
+class _UpdateNicknameBottomSheet extends ConsumerStatefulWidget {
+  const _UpdateNicknameBottomSheet({
+    required this.nickname,
+  });
+
+  final String? nickname;
+
+  @override
+  ConsumerState<_UpdateNicknameBottomSheet> createState() =>
+      _UpdateNicknameBottomSheetState();
+}
+
+class _UpdateNicknameBottomSheetState
+    extends ConsumerState<_UpdateNicknameBottomSheet> {
+  final controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller.text = widget.nickname ?? '';
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listenAsync(
+      updateUserDocumentUseCaseProvider,
+      success: (_) => Navigator.of(context).pop(),
+    );
+    final isLoading = ref.watch(updateUserDocumentUseCaseProvider).isLoading;
+    return SafeArea(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextField(
+                controller: controller,
+                autofocus: true,
+              ),
+            ),
+            TextButton(
+              onPressed: () =>
+                  ref.read(updateUserDocumentUseCaseProvider.notifier).invoke(
+                        nickname: controller.text,
+                      ),
+              child: isLoading ? const ButtonLoading() : const Text('保存'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -10,9 +10,12 @@ part 'user_document.g.dart';
 @FirestoreDocument(path: 'user/{userId}')
 class UserDocument {
   const UserDocument({
+    required this.nickname,
     required this.createdAt,
     required this.updatedAt,
   });
+
+  final String? nickname;
 
   @alwaysUseFieldValueServerTimestampWhenCreating
   final DateTime? createdAt;
