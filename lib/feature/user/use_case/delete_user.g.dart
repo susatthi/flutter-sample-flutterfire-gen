@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_out.dart';
+part of 'delete_user.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$signOutUseCaseHash() => r'1fd3c1d0722eff79e489f05889db2d13b22594d3';
+String _$deleteUserUseCaseHash() => r'429137af59fad9db68979387afc5263ec759cc10';
 
-/// See also [SignOutUseCase].
-@ProviderFor(SignOutUseCase)
-final signOutUseCaseProvider =
-    AutoDisposeAsyncNotifierProvider<SignOutUseCase, void>.internal(
-  SignOutUseCase.new,
-  name: r'signOutUseCaseProvider',
+/// See also [DeleteUserUseCase].
+@ProviderFor(DeleteUserUseCase)
+final deleteUserUseCaseProvider =
+    AutoDisposeAsyncNotifierProvider<DeleteUserUseCase, void>.internal(
+  DeleteUserUseCase.new,
+  name: r'deleteUserUseCaseProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$signOutUseCaseHash,
+      : _$deleteUserUseCaseHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$SignOutUseCase = AutoDisposeAsyncNotifier<void>;
+typedef _$DeleteUserUseCase = AutoDisposeAsyncNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

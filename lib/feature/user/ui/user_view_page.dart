@@ -6,7 +6,7 @@ import '../../../core/data/firebase/firebase_auth.dart';
 import '../../../core/ui/component/button_loading.dart';
 import '../../../core/ui/component/riverpod.dart';
 import '../state/user_document.dart';
-import '../use_case/sign_out.dart';
+import '../use_case/delete_user.dart';
 import '../use_case/update_user_document.dart';
 
 class UserViewPage extends StatelessWidget {
@@ -35,7 +35,7 @@ class _Body extends StatelessWidget {
           _UidListTile(),
           _NicknameListTile(),
           Gap(32),
-          _SignOutButton(),
+          _DeleteUserButton(),
           Gap(32),
         ],
       ),
@@ -136,16 +136,16 @@ class _UpdateNicknameBottomSheetState
   }
 }
 
-class _SignOutButton extends ConsumerWidget {
-  const _SignOutButton();
+class _DeleteUserButton extends ConsumerWidget {
+  const _DeleteUserButton();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.listenAsync(signOutUseCaseProvider);
-    final isLoading = ref.watch(signOutUseCaseProvider).isLoading;
+    ref.listenAsync(deleteUserUseCaseProvider);
+    final isLoading = ref.watch(deleteUserUseCaseProvider).isLoading;
     return TextButton(
-      onPressed: () => ref.read(signOutUseCaseProvider.notifier).invoke(),
-      child: isLoading ? const ButtonLoading() : const Text('サインアウト'),
+      onPressed: () => ref.read(deleteUserUseCaseProvider.notifier).invoke(),
+      child: isLoading ? const ButtonLoading() : const Text('ユーザー削除'),
     );
   }
 }
