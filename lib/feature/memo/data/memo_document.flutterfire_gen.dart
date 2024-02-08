@@ -84,14 +84,14 @@ class ReadMemoDocument {
 /// automatically set to the server's timestamp.
 class CreateMemoDocument {
   const CreateMemoDocument({
-    required this.text,
+    this.text,
   });
 
-  final String text;
+  final String? text;
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
-      'text': text,
+      'text': text ?? '',
       'createdAt': FieldValue.serverTimestamp(),
       'updatedAt': FieldValue.serverTimestamp(),
     };

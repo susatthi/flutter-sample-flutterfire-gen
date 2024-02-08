@@ -11,6 +11,7 @@ class MemoDocument {
     required this.updatedAt,
   });
 
+  @CreateDefault('')
   final String text;
 
   @alwaysUseFieldValueServerTimestampWhenCreating

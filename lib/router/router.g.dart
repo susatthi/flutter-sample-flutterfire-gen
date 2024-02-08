@@ -38,8 +38,12 @@ RouteBase get $memoIndexRoute => GoRouteData.$route(
       factory: $MemoIndexRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
-          path: 'memo/add',
-          factory: $MemoAddRouteExtension._fromState,
+          path: 'memo/create',
+          factory: $MemoCreateRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
+          path: 'memo/update/:memoId',
+          factory: $MemoUpdateRouteExtension._fromState,
         ),
         GoRouteData.$route(
           path: 'user',
@@ -66,11 +70,31 @@ extension $MemoIndexRouteExtension on MemoIndexRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $MemoAddRouteExtension on MemoAddRoute {
-  static MemoAddRoute _fromState(GoRouterState state) => const MemoAddRoute();
+extension $MemoCreateRouteExtension on MemoCreateRoute {
+  static MemoCreateRoute _fromState(GoRouterState state) =>
+      const MemoCreateRoute();
 
   String get location => GoRouteData.$location(
-        '/memo/add',
+        '/memo/create',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $MemoUpdateRouteExtension on MemoUpdateRoute {
+  static MemoUpdateRoute _fromState(GoRouterState state) => MemoUpdateRoute(
+        memoId: state.pathParameters['memoId']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/memo/update/${Uri.encodeComponent(memoId)}',
       );
 
   void go(BuildContext context) => context.go(location);

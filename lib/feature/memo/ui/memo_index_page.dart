@@ -20,7 +20,7 @@ class MemoIndexPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () => const MemoAddRoute().go(context),
+            onPressed: () => const MemoCreateRoute().go(context),
           ),
           IconButton(
             icon: const Icon(Icons.account_circle),
@@ -83,6 +83,7 @@ class _ListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final createdAt = memoDocument.createdAt;
     return ListTile(
+      onTap: () => MemoUpdateRoute(memoId: memoDocument.memoId).go(context),
       title: Text(memoDocument.text),
       subtitle: Text(
         createdAt != null
