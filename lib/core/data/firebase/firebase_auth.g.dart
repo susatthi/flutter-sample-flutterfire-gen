@@ -34,5 +34,20 @@ final firebaseUserProvider = AutoDisposeStreamProvider<User?>.internal(
 );
 
 typedef FirebaseUserRef = AutoDisposeStreamProviderRef<User?>;
+String _$firebaseUserIdHash() => r'dbf02945dc53d8ca68c334eebea695122bd84d65';
+
+/// See also [firebaseUserId].
+@ProviderFor(firebaseUserId)
+final firebaseUserIdProvider = AutoDisposeFutureProvider<String>.internal(
+  firebaseUserId,
+  name: r'firebaseUserIdProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$firebaseUserIdHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FirebaseUserIdRef = AutoDisposeFutureProviderRef<String>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

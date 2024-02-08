@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../core/data/firebase/firebase_auth.dart';
 import '../../../router/router.dart';
 import '../data/user_document.dart';
+import '../state/user_document.dart';
 
 part 'sign_up.g.dart';
 

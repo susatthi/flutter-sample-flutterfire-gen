@@ -7,7 +7,7 @@ part of 'update_user_document.dart';
 // **************************************************************************
 
 String _$updateUserDocumentUseCaseHash() =>
-    r'c757e531220b678b8c1a75a17c3befd1e7002ea6';
+    r'3f063f534d683bcafa772bc88a424cfe4fc4cf25';
 
 /// See also [UpdateUserDocumentUseCase].
 @ProviderFor(UpdateUserDocumentUseCase)

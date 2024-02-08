@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../feature/memo/ui/memo_add_page.dart';
 import '../feature/memo/ui/memo_index_page.dart';
 import '../feature/user/state/is_signed_in.dart';
 import '../feature/user/ui/sign_up_page.dart';
@@ -41,6 +42,9 @@ class SignUpRoute extends GoRouteData {
 @TypedGoRoute<MemoIndexRoute>(
   path: '/',
   routes: [
+    TypedGoRoute<MemoAddRoute>(
+      path: 'memo/add',
+    ),
     TypedGoRoute<UserViewRoute>(
       path: 'user',
     ),
@@ -52,6 +56,15 @@ class MemoIndexRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const MemoIndexPage();
+  }
+}
+
+class MemoAddRoute extends GoRouteData {
+  const MemoAddRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const MemoAddPage();
   }
 }
 

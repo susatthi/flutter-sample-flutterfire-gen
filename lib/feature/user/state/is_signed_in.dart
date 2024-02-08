@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../data/user_document.dart';
+import 'user_document.dart';
 
 part 'is_signed_in.g.dart';
 

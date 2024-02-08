@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import '../../../core/data/firebase/firebase_auth.dart';
 import '../../../core/ui/component/button_loading.dart';
 import '../../../core/ui/component/riverpod.dart';
-import '../data/user_document.dart';
+import '../state/user_document.dart';
 import '../use_case/sign_out.dart';
 import '../use_case/update_user_document.dart';
 
@@ -48,10 +48,10 @@ class _UidListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncValue = ref.watch(firebaseUserProvider);
+    final asyncValue = ref.watch(firebaseUserIdProvider);
     return ListTile(
       title: const Text('UID'),
-      subtitle: Text(asyncValue.valueOrNull?.uid ?? ''),
+      subtitle: Text(asyncValue.valueOrNull ?? ''),
     );
   }
 }

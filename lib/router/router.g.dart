@@ -38,6 +38,10 @@ RouteBase get $memoIndexRoute => GoRouteData.$route(
       factory: $MemoIndexRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
+          path: 'memo/add',
+          factory: $MemoAddRouteExtension._fromState,
+        ),
+        GoRouteData.$route(
           path: 'user',
           factory: $UserViewRouteExtension._fromState,
         ),
@@ -50,6 +54,23 @@ extension $MemoIndexRouteExtension on MemoIndexRoute {
 
   String get location => GoRouteData.$location(
         '/',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $MemoAddRouteExtension on MemoAddRoute {
+  static MemoAddRoute _fromState(GoRouterState state) => const MemoAddRoute();
+
+  String get location => GoRouteData.$location(
+        '/memo/add',
       );
 
   void go(BuildContext context) => context.go(location);

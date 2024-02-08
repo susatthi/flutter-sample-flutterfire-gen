@@ -22,7 +22,7 @@ final userDocumentQueryProvider =
 );
 
 typedef UserDocumentQueryRef = AutoDisposeProviderRef<UserDocumentQuery>;
-String _$userDocumentHash() => r'ed16c9ad1f385f9379a9b353802d36e2df69cf1f';
+String _$userDocumentHash() => r'451871a02496b46eb20dfc7476b515c5e4ae119f';
 
 /// See also [userDocument].
 @ProviderFor(userDocument)

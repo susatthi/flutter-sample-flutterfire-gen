@@ -12,3 +12,13 @@ FirebaseAuth firebaseAuth(FirebaseAuthRef ref) {
 Stream<User?> firebaseUser(FirebaseUserRef ref) {
   return ref.watch(firebaseAuthProvider).userChanges();
 }
+
+@riverpod
+Future<String> firebaseUserId(FirebaseUserIdRef ref) async {
+  final firebaseUser = await ref.watch(firebaseUserProvider.future);
+  if (firebaseUser == null) {
+    // ignore: only_throw_errors
+    throw 'サインインしていません。';
+  }
+  return firebaseUser.uid;
+}
