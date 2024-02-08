@@ -12,10 +12,13 @@ UserDocumentQuery userDocumentQuery(UserDocumentQueryRef ref) {
 
 @riverpod
 Stream<ReadUserDocument?> userDocument(UserDocumentRef ref) {
-  final asyncValue = ref.watch(firebaseUserIdProvider);
+  final asyncValue = ref.watch(firebaseUserProvider);
   return asyncValue.when(
-    data: (userId) =>
-        ref.watch(userDocumentQueryProvider).subscribeDocument(userId: userId),
+    data: (firebaseUser) => firebaseUser != null
+        ? ref
+            .watch(userDocumentQueryProvider)
+            .subscribeDocument(userId: firebaseUser.uid)
+        : Stream.value(null),
     // ignore: only_throw_errors
     error: (err, stack) => throw err,
     loading: Stream.empty,
