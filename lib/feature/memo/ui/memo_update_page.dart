@@ -54,15 +54,15 @@ class _Body extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: Column(
         children: [
-          _NicknameTextField(),
+          _MemoTextField(),
         ],
       ),
     );
   }
 }
 
-class _NicknameTextField extends ConsumerWidget {
-  const _NicknameTextField();
+class _MemoTextField extends ConsumerWidget {
+  const _MemoTextField();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
