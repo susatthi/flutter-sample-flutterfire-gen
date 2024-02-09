@@ -10,9 +10,9 @@ part 'delete_user.g.dart';
 @riverpod
 class DeleteUserUseCase extends _$DeleteUserUseCase with UseCase {
   @override
-  FutureOr<void> build() => initUseCase();
+  FutureOr<void> build() => buildInternal();
 
-  Future<void> invoke() => guard(() async {
+  Future<void> invoke() => invokeInternal(() async {
         final firebaseUser = await ref.read(firebaseUserProvider.future);
         if (firebaseUser == null) {
           // ignore: only_throw_errors

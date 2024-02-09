@@ -7,7 +7,7 @@ part of 'create_memo_document.dart';
 // **************************************************************************
 
 String _$createMemoDocumentUseCaseHash() =>
-    r'39f8b64259aa7c02d65ce7b0cf9cc5bf46020a9c';
+    r'c55f1ed4c16d5436699ff40ecf292f879ffc5ddc';
 
 /// See also [CreateMemoDocumentUseCase].
 @ProviderFor(CreateMemoDocumentUseCase)

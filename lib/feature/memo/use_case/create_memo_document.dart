@@ -11,9 +11,9 @@ part 'create_memo_document.g.dart';
 class CreateMemoDocumentUseCase extends _$CreateMemoDocumentUseCase
     with UseCase {
   @override
-  FutureOr<void> build() => initUseCase();
+  FutureOr<void> build() => buildInternal();
 
-  Future<void> invoke() => guard(() async {
+  Future<void> invoke() => invokeInternal(() async {
         final createMemoDocument = ref.read(createMemoDocumentNotifierProvider);
         final userId = await ref.read(firebaseUserIdProvider.future);
         await ref.read(memoDocumentQueryProvider).add(

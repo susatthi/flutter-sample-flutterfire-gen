@@ -6,7 +6,7 @@ part of 'delete_user.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$deleteUserUseCaseHash() => r'429137af59fad9db68979387afc5263ec759cc10';
+String _$deleteUserUseCaseHash() => r'520d93cef106c9bee6d15b52e96cf2eea5d94f49';
 
 /// See also [DeleteUserUseCase].
 @ProviderFor(DeleteUserUseCase)

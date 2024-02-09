@@ -7,7 +7,7 @@ part of 'update_memo_document.dart';
 // **************************************************************************
 
 String _$updateMemoDocumentUseCaseHash() =>
-    r'67c9cef5cc5e4750e4ca56cd622378876e4addfb';
+    r'36ba4ad03a146e2e06f6e0a9198e88f4d3ad7313';
 
 /// See also [UpdateMemoDocumentUseCase].
 @ProviderFor(UpdateMemoDocumentUseCase)
