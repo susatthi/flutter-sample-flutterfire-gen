@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 // ignore: invalid_use_of_internal_member
-mixin UseCase on BuildlessAutoDisposeAsyncNotifier<void> {
+mixin UseCase<State> on BuildlessAutoDisposeAsyncNotifier<State> {
   bool _mounted = true;
 
   @protected
@@ -14,12 +14,13 @@ mixin UseCase on BuildlessAutoDisposeAsyncNotifier<void> {
   bool get mounted => _mounted;
 
   @protected
-  FutureOr<void> initUseCase() {
+  FutureOr<State?> buildInternal([FutureOr<State?> Function()? future]) {
     ref.onDispose(setUnmounted);
+    return future?.call();
   }
 
   @protected
-  Future<void> guard(Future<void> Function() future) async {
+  Future<void> invokeInternal(Future<State> Function() future) async {
     if (state.isLoading) {
       return;
     }

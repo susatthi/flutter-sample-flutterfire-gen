@@ -12,9 +12,9 @@ part 'update_memo_document.g.dart';
 class UpdateMemoDocumentUseCase extends _$UpdateMemoDocumentUseCase
     with UseCase {
   @override
-  FutureOr<void> build() => initUseCase();
+  FutureOr<void> build() => buildInternal();
 
-  Future<void> invoke() => guard(() async {
+  Future<void> invoke() => invokeInternal(() async {
         final updateMemo =
             ref.read(updateMemoDocumentNotifierProvider).requireValue;
         final userId = await ref.read(firebaseUserIdProvider.future);

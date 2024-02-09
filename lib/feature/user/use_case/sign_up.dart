@@ -11,9 +11,9 @@ part 'sign_up.g.dart';
 @riverpod
 class SignUpUseCase extends _$SignUpUseCase with UseCase {
   @override
-  FutureOr<void> build() => initUseCase();
+  FutureOr<void> build() => buildInternal();
 
-  Future<void> invoke() => guard(() async {
+  Future<void> invoke() => invokeInternal(() async {
         // 匿名ユーザーでサインインする
         final credential =
             await ref.read(firebaseAuthProvider).signInAnonymously();

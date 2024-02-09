@@ -7,7 +7,7 @@ part of 'delete_memo_document.dart';
 // **************************************************************************
 
 String _$deleteMemoDocumentUseCaseHash() =>
-    r'a392113873b79fe780a0303eb1ae9a0aabe9148d';
+    r'cdc2753ef9264089308731858c73d2d8d718bf4e';
 
 /// Copied from Dart SDK
 class _SystemHash {

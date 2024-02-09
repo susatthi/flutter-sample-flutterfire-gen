@@ -10,9 +10,9 @@ part 'delete_memo_document.g.dart';
 class DeleteMemoDocumentUseCase extends _$DeleteMemoDocumentUseCase
     with UseCase {
   @override
-  FutureOr<void> build(String memoId) => initUseCase();
+  FutureOr<void> build(String memoId) => buildInternal();
 
-  Future<void> invoke() => guard(() async {
+  Future<void> invoke() => invokeInternal(() async {
         final userId = await ref.read(firebaseUserIdProvider.future);
         await ref.read(memoDocumentQueryProvider).delete(
               userId: userId,

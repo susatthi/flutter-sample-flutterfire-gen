@@ -11,12 +11,12 @@ part 'update_user_document.g.dart';
 class UpdateUserDocumentUseCase extends _$UpdateUserDocumentUseCase
     with UseCase {
   @override
-  FutureOr<void> build() => initUseCase();
+  FutureOr<void> build() => buildInternal();
 
   Future<void> invoke({
     String? nickname,
   }) =>
-      guard(() async {
+      invokeInternal(() async {
         final userId = await ref.read(firebaseUserIdProvider.future);
         await ref.read(userDocumentQueryProvider).update(
               userId: userId,
